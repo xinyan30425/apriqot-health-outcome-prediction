@@ -18,6 +18,9 @@ write.csv(cps_sas_data_2019, "/Users/xinyanliu/Desktop/NEU/Apriqot/CPS/2019/cpsd
 fcp_sas_data_2019 <- read_sas("/Users/xinyanliu/Desktop/NEU/Apriqot/CPS/2019/fcpdec2019.sas7bdat")
 write.csv(fcp_sas_data_2019, "/Users/xinyanliu/Desktop/NEU/Apriqot/CPS/2019/fcpdec2019.csv", row.names = FALSE)
 
+me0021 <- read_sas("/Users/xinyanliu/Desktop/NEU/Apriqot/MaineCDCBRFSS/me0021_n.sas7bdat")
+write.csv(me0021, "/Users/xinyanliu/Desktop/NEU/Apriqot/MaineCDCBRFSS/me0021.csv", row.names = FALSE)
+
 ##########################################################################################
 # BRFSS data
 # Read the .XPT file

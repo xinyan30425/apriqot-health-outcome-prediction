@@ -44,9 +44,9 @@ process_new_dataset <- function(file_path) {
     mutate(
       SEX = if_else(SEX == 1, "Male", "Female"), # Assuming 1 is male and 2 is female
       RACE = case_when(
-        RAC1P == 1 ~ "White", # White
+        HISP != 1 ~ "Hispanic", # Hispanic
         RAC1P == 2 ~ "Black", # Black or African American
-        ANC2P == 290 ~ "Hispanic" # Hispanic
+        TRUE ~ "White"
       ),
       AGEG = case_when(
         AGEP >= 65 & AGEP <= 69 ~ "65-69",
@@ -81,11 +81,9 @@ process_new_dataset <- function(file_path) {
   
   # Save the processed data to a new CSV file
   write_csv(new_data, "new_england_people_18_22_combined_processed_with_alzheimer_prob.csv")
-  # Return the processed new data
   return(new_data)
 }
 
-# Example usage
 result <- process_new_dataset("/Users/xinyanliu/Desktop/NEU/Apriqot/ACS/newengland_2018_2022_combined_dataset.csv")
 View(result)
 
@@ -190,6 +188,4 @@ save_plot_to_path(age_group_plot, "age_group_plot.png")
 save_plot_to_path(state_plot, "state_plot.png")
 save_plot_to_path(year_plot, "year_plot.png")
 
-# filtered 2020 data
-"/Users/xinyanliu/Desktop/NEU/Apriqot/ACS/new_england_people_18_22_combined_processed_5yearage.csv"
 
